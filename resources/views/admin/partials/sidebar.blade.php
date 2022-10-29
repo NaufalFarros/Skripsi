@@ -61,11 +61,11 @@
                  {{-- @endif --}}
                  <li class="nav-item">
 
-                    <a href="" class="nav-link">
+                    <a href="{{url('admin/tabelsensor')}}" class="nav-link">
 
                         <i class="fas fa-calendar-alt"></i>
                         <p>
-                            Tambah Artikel
+                            Tabel Data Sensor
                         </p>
                     </a>
                 </li>

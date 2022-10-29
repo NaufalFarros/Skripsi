@@ -19,6 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/sensor',[dataiotController::class,'ajax']);
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('/', function () {
@@ -26,7 +27,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     })->name('admin');
     
     Route::get('/datasensor',[dataiotController::class,'index'])->name('datasensor.index');
-
+    Route::get('/tabelsensor',[dataiotController::class,'datatable'])->name('tabelsensor.datatable');
     // Route::put('donasi/nonactive/{donasi}',[AprroveController::class,'nonactive'])->name('donasi.nonactive');
     // Route::put('donasi/active/{donasi}', [AprroveController::class,'active'])->name('donasi.active');
    

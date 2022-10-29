@@ -10,23 +10,26 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset ('AdminLTE/dist/css/adminlte.min.css')}}">
+  <link rel="stylesheet" href="{{asset('AdminLTE/dist/css/adminlte.min.css')}}">
+  <!-- overlayScrollbars -->
+  {{-- <link rel="stylesheet" href="{{asset('AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}"> --}}
+
   {{-- CSRF TOKEN AJAX --}}
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @yield('head')
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed">
 <!-- Site wrapper -->
 <div class="wrapper">
   
   {{-- @include('sweetalert::alert') --}}
   
   
-  @include('admin.partials.navbar')
   
   
   @include('admin.partials.sidebar')
+  @include('admin.partials.navbar')
   
   
   
@@ -48,10 +51,10 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="{{asset('AdminLTE/plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- jQuery -->
+<script src="{{asset('AdminLTE/plugins/jquery/jquery.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('AdminLTE/dist/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->

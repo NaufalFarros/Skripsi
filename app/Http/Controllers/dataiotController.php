@@ -13,6 +13,20 @@ class dataiotController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        // $this->middleware('auth');
+    }
+
+    public function datatable(){
+
+        $sensorData = dataSensor::all();
+
+        return view('admin.datatable', compact('sensorData'));
+
+    }
+
+
     public function index(Request $request)
     {
 
@@ -22,6 +36,11 @@ class dataiotController extends Controller
         }
         // dd($data);
         return view('admin.datasensor');
+    }
+
+    public function ajax(){
+        $data = dataSensor::orderby('created_at','desc')->take(10)->get()->reverse()->values();     
+        return response($data);
     }
 
     /**
@@ -50,10 +69,14 @@ class dataiotController extends Controller
         $animal=new dataSensor();
         $animal->suhu = $request->get('suhu');
         $animal->ph = $request->get('pH');
-        $animal->created_at = Carbon::now('Asia/Jakarta');
-        $animal->updated_at = Carbon::now('Asia/Jakarta');
+        $animal->salinitas = $request->get('Garam');
+        $animal->kalmanSuhu = $request->get('kalmanSuhu');
+        $animal->kalmanPh = $request->get('kalmanPh');
+        $animal->kalmanSalinitas = $request->get('kalmanGaram');
+        $animal->tanggal = Carbon::now()->format('Y-m-d H:i:s');
+        // $animal->updated_at = Carbon::now('Asia/Jakarta');
         $animal->save();
-                return response($animal);
+        return response($animal);
     }
 
     /**

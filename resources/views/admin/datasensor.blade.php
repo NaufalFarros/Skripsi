@@ -33,6 +33,10 @@
                 <canvas id="myChart2" width="500" height="400"></canvas>
                 
             </div>
+            <div class="col-6-lg">
+                <canvas id="myChart3" width="500" height="400"></canvas>
+                
+            </div>
         </div>
         <!-- /.row -->
     </div>
