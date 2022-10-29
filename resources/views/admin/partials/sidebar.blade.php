@@ -87,7 +87,7 @@
 
 
                    <li class="nav-item">
-                     <a href="" class="nav-link">
+                     <a href="{{url('admin/profile')}}" class="nav-link">
                          <i class="fas fa-user-cog"></i>
                          <p>
                              Profile Setting

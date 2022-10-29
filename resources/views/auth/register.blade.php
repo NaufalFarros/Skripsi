@@ -35,6 +35,15 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label for="username"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="username" id="username" class="@error('username') is-invalid @enderror" placeholder="Username "/>
+                                @error('username')
+                                    <span class="invalid-feedback" style="color: red" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
                                 <input type="email" name="email" id="email" class="@error('email') is-invalid @enderror" placeholder="Your Email"/>
                                 @error('email')

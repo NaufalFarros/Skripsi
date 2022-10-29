@@ -2,18 +2,34 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
+// use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
 use Illuminate\Notifications\Notifiable;
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
-use Illuminate\Contracts\Auth\Authenticatable;
+// use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+// use Illuminate\Contracts\Auth\Authenticatable;
 
-class User extends Eloquent implements Authenticatable
+//punya github yang baru 
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Auth\MustVerifyEmail;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
+use Illuminate\Foundation\Auth\Access\Authorizable;
+use Jenssegers\Mongodb\Eloquent\Model;
+
+class User extends Model implements AuthenticatableContract,
+AuthorizableContract,
+CanResetPasswordContract,
+MustVerifyEmailContract
 {
     use HasFactory, Notifiable;
-    use AuthenticatableTrait;
+    use Authenticatable, Authorizable, CanResetPassword,MustVerifyEmail;
+
+  
     /**
      * The attributes that are mass assignable.
      *
@@ -23,7 +39,7 @@ class User extends Eloquent implements Authenticatable
     // protected $collection = 'User';
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name','username' ,'email', 'password',
     ];
 
     /**

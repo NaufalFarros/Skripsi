@@ -21,13 +21,16 @@ Route::get('/', function () {
 
 Route::get('/sensor',[dataiotController::class,'ajax']);
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','verified']], function () {
     Route::get('/', function () {
         return view('admin.index');
     })->name('admin');
     
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
     Route::get('/datasensor',[dataiotController::class,'index'])->name('datasensor.index');
     Route::get('/tabelsensor',[dataiotController::class,'datatable'])->name('tabelsensor.datatable');
+
+    Route::put('profile/update/{id}', [App\Http\Controllers\ProfileController::class, 'UbahPassword'])->name('profile.update');
     // Route::put('donasi/nonactive/{donasi}',[AprroveController::class,'nonactive'])->name('donasi.nonactive');
     // Route::put('donasi/active/{donasi}', [AprroveController::class,'active'])->name('donasi.active');
    
@@ -48,6 +51,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 });
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
