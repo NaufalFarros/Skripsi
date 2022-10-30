@@ -26,15 +26,15 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-6-lg">
-                <canvas id="myChart" width="500" height="400"></canvas>
+                <canvas id="myChart" width="1000" height="400"></canvas>
 
             </div>
             <div class="col-6-lg">
-                <canvas id="myChart2" width="500" height="400"></canvas>
+                <canvas id="myChart2" width="1000" height="400"></canvas>
                 
             </div>
             <div class="col-6-lg">
-                <canvas id="myChart3" width="500" height="400"></canvas>
+                <canvas id="myChart3" width="1000" height="400"></canvas>
                 
             </div>
         </div>

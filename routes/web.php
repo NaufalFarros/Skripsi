@@ -30,7 +30,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','verified']], functio
     Route::get('/datasensor',[dataiotController::class,'index'])->name('datasensor.index');
     Route::get('/tabelsensor',[dataiotController::class,'datatable'])->name('tabelsensor.datatable');
 
-    Route::put('profile/update/{id}', [App\Http\Controllers\ProfileController::class, 'UbahPassword'])->name('profile.update');
+    Route::post('profile/update/{id}', [App\Http\Controllers\ProfileController::class, 'UbahPassword'])->name('profile.update');
     // Route::put('donasi/nonactive/{donasi}',[AprroveController::class,'nonactive'])->name('donasi.nonactive');
     // Route::put('donasi/active/{donasi}', [AprroveController::class,'active'])->name('donasi.active');
    

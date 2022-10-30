@@ -59,7 +59,7 @@
                                 </li>
                                 {{-- {{ hideUsername(Auth::user()->username) }} --}}
                                 <li class="list-group-item">
-                                    <b>Uername :</b> <a class="float-right">{{Auth::user()->username}}</a>
+                                    <b>Uername :</b> <a class="float-right">{{Auth::user()->updated_at->isoFormat('dddd, D MMM Y ')}}</a>
                                 </li>
 
                             </ul>
@@ -139,7 +139,7 @@
                                     <form class="form-horizontal"
                                         action="{{ url('admin/profile/update', Auth::user()->id) }}" method="post">
                                         @csrf
-                                        @method('PUT')
+                                        @method('POST')
                                         <div class="form-group row">
                                             <label for="password" class="col-sm-2 col-form-label">Password Baru</label>
                                             <div class="col-sm-10">

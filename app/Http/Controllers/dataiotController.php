@@ -29,19 +29,26 @@ class dataiotController extends Controller
 
     public function index(Request $request)
     {
-
+        //filter data sebelumnya berdasarkan tanggal
+        $filter_tanggal = $request->get('filter_tanggal');
+        if($filter_tanggal){
+            $sensorData = dataSensor::where('tanggal', 'like', "%$filter_tanggal%")->get();
+        }else{
+            $sensorData = dataSensor::all();
+        }
+        
         if($request->ajax()){
 
-            return $data = dataSensor::orderby('created_at','desc')->take(10)->get()->reverse()->values();     
+            return $data = dataSensor::orderby('created_at','desc')->get()->reverse()->values();     
         }
         // dd($data);
         return view('admin.datasensor');
     }
 
-    public function ajax(){
-        $data = dataSensor::orderby('created_at','desc')->take(10)->get()->reverse()->values();     
-        return response($data);
-    }
+    // public function ajax(){
+    //     $data = dataSensor::orderby('created_at','desc')->take(10)->get()->reverse()->values();     
+    //     return response($data);
+    // }
 
     /**
      * Show the form for creating a new resource.

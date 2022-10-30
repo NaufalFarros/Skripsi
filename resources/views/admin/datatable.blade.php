@@ -10,7 +10,6 @@
 @endsection
 
 @section('content')
-
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -30,60 +29,82 @@
 
     <div class="content">
         <div class="container-fluid">
-                    <div class="card">
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Nomor</th>
-                                        <th>Tanggal</th>
-                                        <th>Suhu</th>
-                                        <th>Kalman Suhu</th>
-                                        <th>Salinitas</th>
-                                        <th>Kalman Salinitas</th>
-                                        <th>pH</th>
-                                        <th>Kalman pH</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($sensorData as $d)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $d->tanggal }}
-                                            </td>
-                                            <td>{{ $d->suhu }}</td>
-                                            <td>{{ $d->kalmanSuhu }}</td>
-                                            <td>{{ $d->salinitas }}</td>
-                                            <td>{{ $d->kalmanSalinitas }}</td>
-                                            <td>{{ $d->ph }}</td>
-                                            <td>{{ $d->kalmanPh }}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Nomor</th>
-                                        <th>Tanggal</th>
-                                        <th>Suhu</th>
-                                        <th>Kalman Suhu</th>
-                                        <th>Salinitas</th>
-                                        <th>Kalman Salinitas</th>
-                                        <th>pH</th>
-                                        <th>Kalman pH</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
+            <div class="card">
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nomor</th>
+                                <th>Tanggal</th>
+                                <th>Suhu</th>
+                                <th>Kalman Suhu</th>
+                                <th>Salinitas</th>
+                                <th>Kalman Salinitas</th>
+                                <th>pH</th>
+                                <th>Kalman pH</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($sensorData as $d)
+                                <tr>
 
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td> {{ 
+                                        $d->tanggal->isoFormat('dddd, D  MMM Y ') 
+                                    
+                                    }}</td>
+
+                                    <td>{{ $d->suhu }}</td>
+                                    <td>{{ $d->kalmanSuhu }}</td>
+                                    <td>{{ $d->salinitas }}</td>
+                                    <td>{{ $d->kalmanSalinitas }}</td>
+                                    <td>{{ $d->ph }}</td>
+                                    <td>{{ $d->kalmanPh }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Nomor</th>
+                                <th>Tanggal</th>
+                                <th>Suhu</th>
+                                <th>Kalman Suhu</th>
+                                <th>Salinitas</th>
+                                <th>Kalman Salinitas</th>
+                                <th>pH</th>
+                                <th>Kalman pH</th>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
+                <!-- /.card-body -->
             </div>
-      
+
+        </div>
+    </div>
+
 
 
 @section('script')
+    <script>
+    //format tanggal indonesia jquery
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+            hours = d.getHours();
+            minutes = d.getMinutes();
+            seconds = d.getSeconds();
+
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+        return [day, month, year, hours, minutes, seconds].join('-');
+    }
+    </script>
     <!-- DataTables  & Plugins -->
     <script src="{{ asset('AdminLTE/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -97,7 +118,10 @@
     <script src="{{ asset('AdminLTE/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('AdminLTE/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('AdminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-   
+
+
+
+
     <script>
         $(function() {
             $("#example1").DataTable({
@@ -110,5 +134,5 @@
         });
     </script>
 @endsection
-
 @endsection
+

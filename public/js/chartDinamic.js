@@ -112,7 +112,8 @@ var updateChart = function () {
         '<canvas id="myChart3" width="500" height="400"></canvas>'
     );
 
-
+    
+    
 
 
     $.ajax({
