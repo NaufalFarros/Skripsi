@@ -10,6 +10,10 @@ RUN apt-get update && apt-get install -y \
         zip \
         curl \
         unzip \
+        autoconf \
+        pkg-config \
+        libssl-dev \
+        git \
     && pecl install mongodb \
     && pecl install xdebug \
     && docker-php-ext-enable mongodb \
