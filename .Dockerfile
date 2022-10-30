@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y \
         zip \
         curl \
         unzip \
+    && pecl install mongodb \
+    && pecl install xdebug \
     && docker-php-ext-enable mongodb \
     && docker-php-ext-enable xdebug \
     && docker-php-ext-configure gd \
