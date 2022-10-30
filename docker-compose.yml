@@ -1,0 +1,26 @@
+version: '3.8'
+services:  
+  #mysql image 8
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: faros123!@#
+      MONGO_INITDB_DATABASE: skripsi
+      MONGO_INITDB_USER: faros
+      MONGO_INITDB_PASSWORD: faros123!@#
+    ports:
+      - 27017:27017
+    volumes:
+      - ./database-data:/data/db
+  app:
+    build:
+      context: .
+      dockerfile: .Dockerfile
+    image: 'spaket_dev'
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/var/www/html

@@ -93,7 +93,7 @@ return [
 
         'mongodb' => [
             'driver' => 'mongodb',
-            'host' => env('MG_HOST','localhost'),
+            'host' => env('MG_HOST','0.0.0.0'),
             'port' => env('MG_PORT', 27017),
             'database' => env('MG_DATABASE'),
             'username' => env('MG_USERNAME'),

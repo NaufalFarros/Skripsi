@@ -29,14 +29,8 @@ class dataiotController extends Controller
 
     public function index(Request $request)
     {
-        //filter data sebelumnya berdasarkan tanggal
-        $filter_tanggal = $request->get('filter_tanggal');
-        if($filter_tanggal){
-            $sensorData = dataSensor::where('tanggal', 'like', "%$filter_tanggal%")->get();
-        }else{
-            $sensorData = dataSensor::all();
-        }
-        
+       
+
         if($request->ajax()){
 
             return $data = dataSensor::orderby('created_at','desc')->get()->reverse()->values();     
