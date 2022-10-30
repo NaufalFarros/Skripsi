@@ -7,9 +7,9 @@ FROM php:${PHP_VERSION}-cli
 USER root
 WORKDIR /var/www/html
 RUN apt-get update && apt-get install -y \
-    apt-get install -y autoconf pkg-config libssl-dev git libzip-dev zlib1g-dev && \
-    pecl install mongodb && docker-php-ext-enable mongodb && \
-    pecl install xdebug && docker-php-ext-enable xdebug && \
+    apt-get install -y autoconf pkg-config libssl-dev git libzip-dev zlib1g-dev \
+    pecl install mongodb && docker-php-ext-enable mongodb \
+    pecl install xdebug && docker-php-ext-enable xdebug \
     && docker-php-ext-configure gd \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install pdo_mysql \
