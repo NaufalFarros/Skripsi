@@ -1,10 +1,15 @@
 FROM php:8.0.2-apache
 USER root
 WORKDIR /var/www/html
-RUN apt-get update && 
-    apt-get install -y autoconf pkg-config libssl-dev git libzip-dev zlib1g-dev && \
-    pecl install mongodb && docker-php-ext-enable mongodb && \
-    pecl install xdebug && docker-php-ext-enable xdebug && \
+RUN apt-get update && apt-get install -y \
+        libpng-dev \
+        zlib1g-dev \
+        libxml2-dev \
+        libzip-dev \
+        libonig-dev \
+        zip \
+        curl \
+        unzip \
     && docker-php-ext-configure gd \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install pdo_mysql \
