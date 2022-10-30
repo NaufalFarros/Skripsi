@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y \
         zip \
         curl \
         unzip \
+    && docker-php-ext-enable mongodb \
+    && docker-php-ext-enable xdebug \
     && docker-php-ext-configure gd \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install pdo_mysql \
