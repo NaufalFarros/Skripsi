@@ -19,7 +19,7 @@ services:
     build:
       context: .
       dockerfile: .Dockerfile
-    image: 'spaket_dev'
+    image: 'pazi_jaya'
     ports:
       - 8080:80
     volumes:

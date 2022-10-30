@@ -1,15 +1,10 @@
-ARG PHP_VERSION=8.0
-ARG COMPOSER_VERSION=2.0
-
-FROM composer:${COMPOSER_VERSION}
-FROM php:${PHP_VERSION}-cli
-
+FROM php:8.0.2-apache
 USER root
 WORKDIR /var/www/html
-RUN apt-get update && apt-get install -y \
-    apt-get install -y autoconf pkg-config libssl-dev git libzip-dev zlib1g-dev \
-    pecl install mongodb && docker-php-ext-enable mongodb \
-    pecl install xdebug && docker-php-ext-enable xdebug \
+RUN apt-get update && 
+    apt-get install -y autoconf pkg-config libssl-dev git libzip-dev zlib1g-dev && \
+    pecl install mongodb && docker-php-ext-enable mongodb && \
+    pecl install xdebug && docker-php-ext-enable xdebug && \
     && docker-php-ext-configure gd \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install pdo_mysql \
