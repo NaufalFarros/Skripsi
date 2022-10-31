@@ -23,8 +23,8 @@ class dataSensor extends Model
     ];
 
     protected $dates = array('created_at');
-    // protected $casts = [
-    //     'tanggal' => 'dateTime',
-    // ];
+    protected $casts = [
+        'tanggal' => 'dateTime',
+    ];
     use HasFactory;
 }
