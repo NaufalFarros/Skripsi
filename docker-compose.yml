@@ -7,10 +7,10 @@ services:
     restart: unless-stopped
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: faros123!@#
+      MONGO_INITDB_ROOT_PASSWORD: pencos356!@#
       MONGO_INITDB_DATABASE: skripsi
       MONGO_INITDB_USER: faros
-      MONGO_INITDB_PASSWORD: faros123!@#
+      MONGO_INITDB_PASSWORD: pencos356!@#
     ports:
       - 27017:27017
     volumes:
