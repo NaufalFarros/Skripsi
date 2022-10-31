@@ -13,7 +13,12 @@ class dataSensor extends Eloquent
     protected $collection = 'data_sensors';
 
     protected $fillable = [
-        'suhu', 'ph', 'kalmanSuhu','kalmanPh',
+        'suhu', 
+        'ph',
+        'salinitas',
+        'kalmanSuhu',
+        'kalmanPh',
+        'kalmanSalinitas',
     ];
 
     protected $dates = array('created_at');
