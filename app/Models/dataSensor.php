@@ -19,6 +19,7 @@ class dataSensor extends Model
         'kalmanSuhu',
         'kalmanPh',
         'kalmanSalinitas',
+        'tanggal'
     ];
 
     protected $dates = array('created_at');
