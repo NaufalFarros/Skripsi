@@ -67,27 +67,28 @@ class dataiotController extends Controller
         //     'suhu' => $request['suhu'],
         //     'ph' => $request['pH']
         // ]);
-        // $animal=new dataSensor();
-        // $animal->suhu = $request->get('suhu');
-        // $animal->ph = $request->get('pH');
-        // $animal->salinitas = $request->get('Garam');
-        // $animal->kalmanSuhu = $request->get('kalmanSuhu');
-        // $animal->kalmanPh = $request->get('kalmanPh');
-        // $animal->kalmanSalinitas = $request->get('kalmanGaram');
-        // $animal->tanggal = Carbon::now()->format('Y-m-d H:i:s');
-        // $animal->save();
-        // return response($animal);
+        $animal= new dataSensor();
+        $animal->suhu = $request->get('suhu');
+        $animal->ph = $request->get('pH');
+        $animal->salinitas = $request->get('Garam');
+        $animal->kalmanSuhu = $request->get('kalmanSuhu');
+        $animal->kalmanPh = $request->get('kalmanPh');
+        $animal->kalmanSalinitas = $request->get('kalmanGaram');
+        $animal->tanggal = Carbon::now()->format('Y-m-d H:i:s');
+        $animal->save();
+        return response($animal);
+        //simpan data ke database
 
-        return dataSensor::create([
-            'suhu' => $request['suhu'],
-            'ph' => $request['pH'],
-            'salinitas' => $request['Garam'],
-            'kalmanSuhu' => $request['kalmanSuhu'],
-            'kalmanPh' =>  $request['kalmanPh'],
-            'kalmanSalinitas' => $request['kalmanGaram'],
-            'tanggal' => Carbon::now()->format('Y-m-d H:i:s')
-        ]
-    );
+    //     return dataSensor::create([
+    //         'suhu' => $request['suhu'],
+    //         'ph' => $request['pH'],
+    //         'salinitas' => $request['Garam'],
+    //         'kalmanSuhu' => $request['kalmanSuhu'],
+    //         'kalmanPh' =>  $request['kalmanPh'],
+    //         'kalmanSalinitas' => $request['kalmanGaram'],
+    //         'tanggal' => Carbon::now()->format('Y-m-d H:i:s')
+    //     ]
+    // );
 
     }
 
