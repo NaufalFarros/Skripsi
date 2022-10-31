@@ -21,4 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 
-Route::post('/',[dataiotController::class,'store']);
+Route::post('/sensor',[dataiotController::class,'store']);
