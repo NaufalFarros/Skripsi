@@ -23,8 +23,6 @@ class dataSensor extends Eloquent
     ];
 
     protected $dates = array('created_at');
-    protected $casts = [
-        'tanggal' => 'dateTime',
-    ];
+   
     use HasFactory;
 }
