@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+// use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 use Symfony\Component\CssSelector\Node\ElementNode;
 
-class dataSensor extends Eloquent
+class dataSensor extends Model
 {
     protected $connection = 'mongodb';
     protected $collection = 'data_sensors';

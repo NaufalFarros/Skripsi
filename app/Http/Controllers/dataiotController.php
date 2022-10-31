@@ -62,6 +62,7 @@ class dataiotController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         // return error_log($request);
         // $data= dataSensor::create([
         //     'suhu' => $request['suhu'],
