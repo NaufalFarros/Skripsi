@@ -15,25 +15,25 @@ class dataiotController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth','verified']);
+        $this->middleware(['auth', 'verified']);
     }
 
-    public function datatable(){
+    public function datatable()
+    {
 
         $sensorData = dataSensor::all();
 
         return view('admin.datatable', compact('sensorData'));
-
     }
 
 
     public function index(Request $request)
     {
-       
 
-        if($request->ajax()){
 
-            return $data = dataSensor::orderby('created_at','desc')->get()->reverse()->values();     
+        if ($request->ajax()) {
+
+            return $data = dataSensor::orderby('created_at', 'desc')->get()->reverse()->values();
         }
         // dd($data);
         return view('admin.datasensor');
@@ -62,37 +62,50 @@ class dataiotController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
         // return error_log($request);
         // $data= dataSensor::create([
         //     'suhu' => $request['suhu'],
         //     'ph' => $request['pH']
         // ]);
-        $animal= new dataSensor();
-        $animal->suhu = $request->get('suhu');
-        $animal->ph = $request->get('pH');
-        $animal->salinitas = $request->get('Garam');
-        $animal->kalmanSuhu = $request->get('kalmanSuhu');
-        $animal->kalmanPh = $request->get('kalmanPh');
-        $animal->kalmanSalinitas = $request->get('kalmanGaram');
-        $animal->tanggal = Carbon::now()->format('Y-m-d H:i:s');
-        $animal->save();
-        return response()->json($animal);
+
+        if ($request->json()) {
+            $data = dataSensor::create([
+                'suhu' => $request['suhu'],
+                'ph' => $request['pH'],
+                'salinitas' => $request['Garam'],
+                'kalmanSuhu' => $request['kalmanSuhu'],
+                'kalmanPh' =>  $request['kalmanPh'],
+                'kalmanSalinitas' => $request['kalmanGaram'],
+                'tanggal' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+            return response()->json($data);
+        }
+        // $animal= new dataSensor();
+        // $animal->suhu = $request->get('suhu');
+        // $animal->ph = $request->get('pH');
+        // $animal->salinitas = $request->get('Garam');
+        // $animal->kalmanSuhu = $request->get('kalmanSuhu');
+        // $animal->kalmanPh = $request->get('kalmanPh');
+        // $animal->kalmanSalinitas = $request->get('kalmanGaram');
+        // $animal->tanggal = Carbon::now()->format('Y-m-d H:i:s');
+        // $animal->save();
+        // return response()->json($animal);
 
         //response()->json($data);
 
         //simpan data ke database
 
-    //     return dataSensor::create([
-    //         'suhu' => $request['suhu'],
-    //         'ph' => $request['pH'],
-    //         'salinitas' => $request['Garam'],
-    //         'kalmanSuhu' => $request['kalmanSuhu'],
-    //         'kalmanPh' =>  $request['kalmanPh'],
-    //         'kalmanSalinitas' => $request['kalmanGaram'],
-    //         'tanggal' => Carbon::now()->format('Y-m-d H:i:s')
-    //     ]
-    // );
+        //     return dataSensor::create([
+        //         'suhu' => $request['suhu'],
+        //         'ph' => $request['pH'],
+        //         'salinitas' => $request['Garam'],
+        //         'kalmanSuhu' => $request['kalmanSuhu'],
+        //         'kalmanPh' =>  $request['kalmanPh'],
+        //         'kalmanSalinitas' => $request['kalmanGaram'],
+        //         'tanggal' => Carbon::now()->format('Y-m-d H:i:s')
+        //     ]
+        // );
 
     }
 
