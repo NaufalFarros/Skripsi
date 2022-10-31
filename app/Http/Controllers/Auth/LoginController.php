@@ -89,7 +89,7 @@ class LoginController extends Controller
         return redirect()->route('login')->with('error', 'Username / Email and Password are wrong.');
     }
 
-
+    return redirect()->route('login')->with(['error' => 'Username atau Password salah!!!']);
      //JIKA SALAH MAKA KEMBALI PADA HALAMAN LOGIN DAN AKAN ADA NOTIFIKASI YANG MUNCUL
    }
    public function logout(Request $request)
