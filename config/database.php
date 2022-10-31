@@ -93,7 +93,7 @@ return [
 
         'mongodb' => [
             'driver' => 'mongodb',
-            'host' => env('MG_HOST','0.0.0.0'),
+            'host' => env('MG_HOST','localhost'),
             'port' => env('MG_PORT', 27017),
             'database' => env('MG_DATABASE'),
             'username' => env('MG_USERNAME'),
@@ -101,8 +101,12 @@ return [
             'options' => [
                 // here you can pass more settings to the Mongo Driver Manager
                 // see https://www.php.net/manual/en/mongodb-driver-manager.construct.php under "Uri Options" for a list of complete parameters that you can use
-        
+                
+                'ssl' => true,
                 'database' => 'admin'// required with Mongo 3+
+            
+
+
             ],
         ],
 
