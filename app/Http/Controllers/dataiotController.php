@@ -77,7 +77,10 @@ class dataiotController extends Controller
         $animal->kalmanSalinitas = $request->get('kalmanGaram');
         $animal->tanggal = Carbon::now()->format('Y-m-d H:i:s');
         $animal->save();
-        return response($animal);
+        return response()->json($animal);
+
+        //response()->json($data);
+
         //simpan data ke database
 
     //     return dataSensor::create([
