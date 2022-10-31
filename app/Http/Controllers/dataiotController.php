@@ -81,7 +81,7 @@ class dataiotController extends Controller
         //     ]);
         //     return response()->json($data);
         // }
-
+            dd($request); 
 
         $animal= new dataSensor();
         $animal->suhu = $request->get('suhu');
