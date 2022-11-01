@@ -63,7 +63,7 @@
                                 <p>Register</p>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="form-submit" onclick="lsRememberMe()" value="Log in"/>
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
                             </div>
                         </form>
                     </div>
