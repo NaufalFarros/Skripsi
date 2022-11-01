@@ -59,19 +59,15 @@
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember
                                     me</label>
                             </div>
-                            
-                                <div class="form-group align-items-end">
-                                    <a href="{{ route('password.request') }}">
-                                        <p>Lupa Password</p>
-                                    </a>
-                                </div>
-                            
+                            <div class="form-group align-items-end">
+                                <a href="{{route('password.reset')}}"><p>Lupa Password</p></a>
+                            </div>
                             <div class="form-group">
                                 <p>Register</p>
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit"
-                                     value="Log in" />
+                                    onclick="lsRememberMe()" value="Log in" />
                             </div>
                         </form>
                     </div>
