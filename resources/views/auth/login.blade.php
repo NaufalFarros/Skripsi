@@ -63,7 +63,7 @@
                                 <p>Register</p>
                             </div>
                             <div class="form-group form-button">
-                                <button type="submit" name="signin" id="signin" class="form-submit" value="Log in">LOGIN</button>
+                                <button type="submit"  class="form-submit">LOGIN</button>
                             </div>
                         </form>
                     </div>
