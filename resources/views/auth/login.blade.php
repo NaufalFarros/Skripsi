@@ -71,7 +71,7 @@
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit"
-                                    onclick="lsRememberMe()" value="Log in" />
+                                     value="Log in" />
                             </div>
                         </form>
                     </div>
