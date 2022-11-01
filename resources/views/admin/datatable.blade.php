@@ -51,7 +51,7 @@
 
                                     <td>{{ $loop->iteration }}</td>
                                     <td> {{ 
-                                        $d->tanggal->isoFormat('dddd, D  MMM Y, H:i:s ') 
+                                        $d->tanggal->isoFormat('dddd, D  MMM Y, H:m:s ') 
                                     
                                     }}</td>
 
