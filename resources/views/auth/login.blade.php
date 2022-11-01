@@ -60,7 +60,7 @@
                                     me</label>
                             </div>
                             <div class="form-group align-items-end">
-                                <a href="{{route('password.reset')}}"><p>Lupa Password</p></a>
+                                <a href="{{route('password.request')}}"><p>Lupa Password</p></a>
                             </div>
                             <div class="form-group">
                                 <p>Register</p>
