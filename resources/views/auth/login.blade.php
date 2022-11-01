@@ -59,13 +59,13 @@
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember
                                     me</label>
                             </div>
-                            <form action="">
+                            
                                 <div class="form-group align-items-end">
                                     <a href="{{ route('password.request') }}">
                                         <p>Lupa Password</p>
                                     </a>
                                 </div>
-                            </form>
+                            
                             <div class="form-group">
                                 <p>Register</p>
                             </div>
