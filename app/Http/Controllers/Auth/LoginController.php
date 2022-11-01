@@ -45,61 +45,61 @@ class LoginController extends Controller
  
    }
 
-   public function login(Request $request)
-   {
-    $login = request()->input('username');
+//    public function login(Request $request)
+//    {
+//     $login = request()->input('username');
 
-    $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-    request()->merge([$field => $login]);
+//     $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+//     request()->merge([$field => $login]);
 
-    if ($field == 'email') {
-        $messages = [
+//     if ($field == 'email') {
+//         $messages = [
 
-            'password.required' => 'Password is required',
-            'username.required' => 'Email kosong',
-            'username.exists' => 'Email tidak terdaftar',
+//             'password.required' => 'Password is required',
+//             'username.required' => 'Email kosong',
+//             'username.exists' => 'Email tidak terdaftar',
 
-        ];
-    }
-    if ($field == 'username') {
-        $messages = [
-            'username.required' => 'Username and email kosong',
-            'username.exists' => 'Username / Email tidak terdaftar',
-            'password.required' => 'Password kosong',
-        ];
-    }
+//         ];
+//     }
+//     if ($field == 'username') {
+//         $messages = [
+//             'username.required' => 'Username and email kosong',
+//             'username.exists' => 'Username / Email tidak terdaftar',
+//             'password.required' => 'Password kosong',
+//         ];
+//     }
 
 
-    if($field == 'email'){
-        $this->validate($request, [
-            'username' => 'required|exists:users,email',
-            'password' => 'required',
-        ], $messages);
-    }
+//     if($field == 'email'){
+//         $this->validate($request, [
+//             'username' => 'required|exists:users,email',
+//             'password' => 'required',
+//         ], $messages);
+//     }
 
-    if($field == 'username'){
-        $this->validate($request, [
-            'username' => 'required|exists:users,username',
-            'password' => 'required',
-        ], $messages);
-    }
-    if(Auth::attempt([$field => $login, 'password' => $request->password])){
-        return redirect('/admin');
-    }else{
-        return redirect()->route('login')->with('error', 'Username / Email and Password are wrong.');
-    }
+//     if($field == 'username'){
+//         $this->validate($request, [
+//             'username' => 'required|exists:users,username',
+//             'password' => 'required',
+//         ], $messages);
+//     }
+//     if(Auth::attempt([$field => $login, 'password' => $request->password])){
+//         return redirect('/admin');
+//     }else{
+//         return redirect()->route('login')->with('error', 'Username / Email and Password are wrong.');
+//     }
 
-    return redirect()->route('login')->with(['error' => 'Username atau Password salah!!!']);
-     //JIKA SALAH MAKA KEMBALI PADA HALAMAN LOGIN DAN AKAN ADA NOTIFIKASI YANG MUNCUL
-   }
-   public function logout(Request $request)
-   {
-       $this->guard()->logout();
-       $request->session()->flush();
-       $request->session()->regenerate();
-       return redirect('/login')
-           ->withSuccess('Terimakasih, selamat datang kembali!');
-   }
+//     return redirect()->route('login')->with(['error' => 'Username atau Password salah!!!']);
+//      //JIKA SALAH MAKA KEMBALI PADA HALAMAN LOGIN DAN AKAN ADA NOTIFIKASI YANG MUNCUL
+//    }
+//    public function logout(Request $request)
+//    {
+//        $this->guard()->logout();
+//        $request->session()->flush();
+//        $request->session()->regenerate();
+//        return redirect('/login')
+//            ->withSuccess('Terimakasih, selamat datang kembali!');
+//    }
 
 
 
