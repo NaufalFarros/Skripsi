@@ -59,7 +59,7 @@
                                 </li>
                                 {{-- {{ hideUsername(Auth::user()->username) }} --}}
                                 <li class="list-group-item">
-                                    <b>Uername :</b> <a class="float-right">{{Auth::user()->updated_at->isoFormat('dddd, D MMM Y ')}}</a>
+                                    <b>Uername :</b> <a class="float-right">{{Auth::user()->username}}</a>
                                 </li>
 
                             </ul>
