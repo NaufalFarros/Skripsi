@@ -39,7 +39,8 @@ MustVerifyEmailContract
     // protected $collection = 'User';
 
     protected $fillable = [
-        'name','username' ,'email', 'password',
+        'name','username' ,'email', 'password', 'profile_image',
+
     ];
 
     /**

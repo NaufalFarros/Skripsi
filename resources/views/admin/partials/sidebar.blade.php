@@ -12,12 +12,18 @@
          <!-- Sidebar user (optional) -->
          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
              <div class="image">
-                 {{-- <img src="{{'/storage/'.Auth::user()->profile_photo_path}}" class="img-circle elevation-2"
-                     alt="User Image"> --}}
-                     <img src="#" alt="">
+                @if (Auth::user()->profile_image == null)
+                <img class="profile-user-img img-fluid img-circle"
+                src="{{ asset('/image/default_image.png') }}" alt="">
+                @else
+                <img class="profile-user-img img-fluid img-circle"
+                src="{{ '/storage/avatars/'.Auth::user()->profile_image }}" alt="">
+                @endif
+                 
+                     
              </div>
              <div class="info">
-                 {{-- <a href="#" class="d-block">{{Auth::user()->name}}</a> --}}
+                 <a href="#" class="d-block">{{Auth::user()->name}}</a>
              </div>
          </div>
 
@@ -44,7 +50,7 @@
                      <a href=" {{ url('/admin') }}" class="nav-link">
                          <i class="nav-icon fas fa-tachometer-alt"></i>
                          <p>
-                             Home
+                             Dashboard
                          </p>
                      </a>
                  </li>
@@ -71,14 +77,14 @@
                 </li>
 
 
-                 <li class="nav-item">
+                 {{-- <li class="nav-item">
                      <a href="" class="nav-link">
                         <i class="fas fa-money-bill-alt"></i>
                          <p>
                              Transaksi Donasi
                          </p>
                      </a>
-                 </li>
+                 </li> --}}
 
                
 

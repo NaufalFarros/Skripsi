@@ -45,9 +45,20 @@
                     <!-- Profile Image -->
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
-                            {{-- <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle" src="" alt="User profile picture">
-                            </div> --}}
+                            <div class="text-center">
+                                @if (Auth::user()->profile_image == null)
+                                    <img class="profile-user-img img-fluid img-circle"
+                                        src="{{ asset('/image/default_image.png') }}" alt="User profile picture">
+                                @else
+                                <img class="profile-user-img img-fluid img-circle" src="{{'/storage/avatars/'. Auth::user()->profile_image}}" alt="User profile picture">
+                                @endif
+                                <form action="{{route('profile.update-image', Auth::user()->id )}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <p>Upload Image</p>
+                                    <input type="file" name="image">
+                                    <button class="btn btn-primary mt-2 " type="submit">Upload</button>
+                                </form>
+                            </div>
                             {{-- {{ Auth::user()->name }} --}}
                             <h3 class="profile-username text-center">{{Auth::user()->name}} </h3>
                             {{-- {{ Auth::user()->role }} --}}
@@ -137,7 +148,7 @@
                                 </div> --}}
                                 <div class="tab-pane" id="settings2">
                                     <form class="form-horizontal"
-                                        action="{{ url('admin/profile/update', Auth::user()->id) }}" method="post">
+                                        action="{{ route('profile.update') }}" method="POST">
                                         @csrf
                                         @method('POST')
                                         <div class="form-group row">
