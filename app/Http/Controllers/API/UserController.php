@@ -21,7 +21,12 @@ class UserController extends Controller
             'username' => ['required', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-        ]);
+        ],
+            $messages = [
+               'username.unique' => 'Username already exists',
+                'email.unique' => 'Email already exists',
+            ] 
+    );
 
         // if ($validator->fails()) {
         //     return response()->json($validator->errors()->toJson(), 400);
