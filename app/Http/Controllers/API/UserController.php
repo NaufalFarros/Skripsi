@@ -82,11 +82,13 @@ class UserController extends Controller
             ];
         }
 
+        //cek login 
+
         //cek login
         if (!auth()->attempt($credentials)) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Invalid Credentials'
+                'message' => 'Username or password is incorrect'
             ], 401);
         }
 
