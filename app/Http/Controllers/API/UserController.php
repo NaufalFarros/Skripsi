@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Sanctum\PersonalAccessToken;
 use MongoDB\Operation\Update;
 use PhpParser\Node\Stmt\Return_;
 
@@ -119,9 +120,14 @@ class UserController extends Controller
     }
 
     public function fetch(Request $request){
-            
+        $bearerToken = $request;
+        $token = PersonalAccessToken::findToken($bearerToken);
+        if (!$token) {
+            dd("Error: Token not found");
+        }   
+        $user = $token->tokenable;
         return response()->json([
-            'user' => $request->user()
+            'user' => $user
         ]);
     }
 
