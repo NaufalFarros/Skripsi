@@ -119,7 +119,7 @@ class UserController extends Controller
     }
 
     public function fetch(Request $request){
-            dd($request);
+            // dd($request);
         return response()->json([
             'user' => $request->user()
         ]);
