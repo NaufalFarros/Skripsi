@@ -28,9 +28,9 @@ Route::post('/login', [UserController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/sensor', [SensorController::class, 'index']);
-    Route::post('/user', [UserController::class, 'fetch']);
+    Route::get('/user', [UserController::class, 'fetch']);
     Route::post('/logout', [UserController::class, 'logout']);
-    // Route::post('/user', [UserController::class, 'updateProfile']);
+    Route::post('/user', [UserController::class, 'updateProfile']);
     Route::post('/user/password', [UserController::class, 'updatePassword']);
 
 });
