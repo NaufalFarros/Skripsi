@@ -119,9 +119,12 @@ class UserController extends Controller
     }
 
     public function fetch(Request $request){
-        return $request->user();
+        // return $request->user();
+
+        $user = User::where('id', $request->user()->id)->first();
+
         return response()->json([
-            'user' => $request->user()
+            'user' => $user,
         ]);
     }
 
