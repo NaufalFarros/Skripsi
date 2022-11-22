@@ -125,7 +125,7 @@ class UserController extends Controller
         if (!$token) {
             dd("Error: Token not found");
         }   
-        $user = $token->tokenable;
+        $user = $token->tokenable_id;
         return response()->json([
             'user' => $user
         ]);
