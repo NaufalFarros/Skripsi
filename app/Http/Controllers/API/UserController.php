@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Laravel\Sanctum\PersonalAccessToken;
 use MongoDB\Operation\Update;
 use PhpParser\Node\Stmt\Return_;
 
@@ -120,15 +119,9 @@ class UserController extends Controller
     }
 
     public function fetch(Request $request){
-        // return $request->user();
-       
-        $hashedTooken = $request;
-        $token = PersonalAccessToken::findToken($hashedTooken);
-        $user = $token->tokenable;
-        // $user = User::where('_id', $request->user()->_id)->first();
-
+            
         return response()->json([
-            'user' => $user,
+            'user' => $request->user()
         ]);
     }
 
