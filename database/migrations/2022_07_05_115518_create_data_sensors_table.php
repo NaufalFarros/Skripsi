@@ -14,10 +14,12 @@ class CreateDataSensorsTable extends Migration
     public function up()
     {
         Schema::create('data_sensors', function (Blueprint $table) {
-            $table->float('suhu',3,2);
-            $table->float('ph',3,2);
-            $table->float('kalmanSuhu', 3,2);
-            $table->float('kalmanPh', 3,2);
+            $table->string('suhu');
+            $table->string('ph');
+            $table->string('salinitas');
+            $table->string('kalmanSuhu');
+            $table->string('kalmanPh');
+            $table->string('kalmanSalinitas');
             $table->timestamps();
         });
     }
