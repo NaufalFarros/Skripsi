@@ -22,13 +22,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/sensor',[dataiotController::class,'ajax']);
+// Route::get('/sensor',[dataiotController::class,'ajax']);
 Route::post('/',[dataiotController::class,'store']);
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
+Route::get('/sensor', [SensorController::class, 'index']);
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/sensor', [SensorController::class, 'index']);
     Route::get('/user', [UserController::class, 'fetch']);
     Route::post('/logout', [UserController::class, 'logout']);
     Route::post('/user', [UserController::class, 'updateProfile']);
