@@ -23,6 +23,7 @@ class CreateDataSensorsTable extends Migration
             $collection->string('kalmanSuhu');
             $collection->string('kalmanPh');
             $collection->string('kalmanSalinitas');
+            $collection->string('tanggal');
             $collection->timestamps();
         });
     }
