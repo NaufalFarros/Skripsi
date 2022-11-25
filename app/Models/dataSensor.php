@@ -25,12 +25,12 @@ class dataSensor extends Eloquent
     protected $dates = array('created_at');
     protected $casts = [
         'tanggal' => 'datetime:Y-m-d H:i:s',
-        'suhu' => 'integer',
-        'ph' => 'integer',
-        'salinitas' => 'integer',
-        'kalmanSuhu' => 'integer',
-        'kalmanPh' => 'integer',
-        'kalmanSalinitas' => 'integer',
+        'suhu' => 'string',
+        'ph' => 'string',
+        'salinitas' => 'string',
+        'kalmanSuhu' => 'string',
+        'kalmanPh' => 'string',
+        'kalmanSalinitas' => 'string',
     ];
     use HasFactory;
 }
