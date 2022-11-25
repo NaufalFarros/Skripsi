@@ -14,7 +14,9 @@ class CreateDataSensorsTable extends Migration
     protected $connection = 'mongodb';
     public function up()
     {
-        Schema::create('data_sensors', function ($collection) {
+        Schema::connection($this->connection)
+        ->table('data_sensors', function (Blueprint $collection) 
+        {
             $collection->string('suhu');
             $collection->string('ph');
             $collection->string('salinitas');
@@ -24,7 +26,7 @@ class CreateDataSensorsTable extends Migration
             $collection->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *
