@@ -11,16 +11,17 @@ class CreateDataSensorsTable extends Migration
      *
      * @return void
      */
+    protected $connection = 'mongodb';
     public function up()
     {
-        Schema::create('data_sensors', function (Blueprint $table) {
-            $table->double('suhu');
-            $table->double('ph');
-            $table->double('salinitas');
-            $table->double('kalmanSuhu');
-            $table->double('kalmanPh');
-            $table->double('kalmanSalinitas');
-            $table->timestamps();
+        Schema::create('data_sensors', function ($collection) {
+            $collection->string('suhu');
+            $collection->string('ph');
+            $collection->string('salinitas');
+            $collection->string('kalmanSuhu');
+            $collection->string('kalmanPh');
+            $collection->string('kalmanSalinitas');
+            $collection->timestamps();
         });
     }
 
