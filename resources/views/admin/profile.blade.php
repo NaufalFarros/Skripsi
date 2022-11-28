@@ -46,12 +46,9 @@
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                @if (Auth::user()->profile_image == null)
-                                    <img class="profile-user-img img-fluid img-circle"
-                                        src="{{ asset('/image/default_image.png') }}" alt="User profile picture">
-                                @else
+                               
                                 <img class="profile-user-img img-fluid img-circle" src="{{'/storage/avatars/'. Auth::user()->profile_image}}" alt="User profile picture">
-                                @endif
+                                
                                 <form action="{{route('profile.update-image', Auth::user()->id )}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <p>Upload Image</p>

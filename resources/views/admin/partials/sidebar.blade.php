@@ -12,13 +12,11 @@
          <!-- Sidebar user (optional) -->
          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
              <div class="image">
-                @if (Auth::user()->profile_image == null)
-                <img class="profile-user-img img-fluid img-circle"
-                src="{{ asset('/image/default_image.png') }}" alt="">
-                @else
+                
+               
                 <img class="profile-user-img img-fluid img-circle"
                 src="{{ '/storage/avatars/'.Auth::user()->profile_image }}" alt="">
-                @endif
+                
                  
                      
              </div>
