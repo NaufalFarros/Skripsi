@@ -22,7 +22,7 @@ class UserController extends Controller
         $user = $request->user();
        
 
-        if($user->profile_image == 'https://ui-avatars.com/api/?' ){
+        if($user->profile_image == 'https://ui-avatars.com/api/?'. $user->name ){
             $path = $user->profile_image;
             dd($path);
             return response()->json([
