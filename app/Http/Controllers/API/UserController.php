@@ -19,9 +19,8 @@ class UserController extends Controller
     public function getImage(Request $request)
     { 
         //get user from auth sacntum token
-        $hashedTooken = $request->user()->currentAccessToken();
-        $token = PersonalAccessToken::findToken($hashedTooken);
-        $user = $token->tokenable;
+        $user = $request->user();
+       
 
         if($user->profile_image == 'https://ui-avatars.com/api/?' ){
             $path = $user->profile_image;
