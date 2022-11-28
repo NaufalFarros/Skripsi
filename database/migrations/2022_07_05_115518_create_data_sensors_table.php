@@ -17,7 +17,7 @@ class CreateDataSensorsTable extends Migration
         Schema::connection($this->connection)
         ->table('data_sensors', function (Blueprint $collection) 
         {
-            $collection->string('suhu');
+            $collection->int('suhu');
             $collection->string('ph');
             $collection->string('salinitas');
             $collection->string('kalmanSuhu');
