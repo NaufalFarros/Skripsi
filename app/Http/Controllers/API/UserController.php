@@ -46,7 +46,7 @@ class UserController extends Controller
             'username' => $request->get('username'),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
-            'profile_image' => 'https://ui-avatars.com/api/?' + $request->get('name'),
+            'profile_image' => 'https://ui-avatars.com/api/?' . $request->get('name'),
         ]);
 
         $user = User::where('email', $request->email)->first();
