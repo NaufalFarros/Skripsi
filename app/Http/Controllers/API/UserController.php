@@ -25,11 +25,11 @@ class UserController extends Controller
         if($user->profile_image == 'https://ui-avatars.com/api/?'. $user->name ){
             $path = $user->profile_image;
             // dd($path);
-            return response()->$path;
+            return response()->json($path, 200);
         }else{
             $path = Storage::url('avatars/'.$user->profile_image);
             // dd($path);
-            return response()->$path;
+            return response()->json($path, 200);
         }
         
         
