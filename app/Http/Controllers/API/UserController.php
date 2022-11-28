@@ -7,12 +7,52 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Sanctum\PersonalAccessToken;
 use MongoDB\Operation\Update;
 use PhpParser\Node\Stmt\Return_;
 
 class UserController extends Controller
 {
+
+    public function getImage(Request $request)
+    { 
+        //get user from auth sacntum token
+        $hashedTooken = $request->user()->currentAccessToken();
+        $token = PersonalAccessToken::findToken($hashedTooken);
+        $user = $token->tokenable;
+
+        if($user->profile_image == 'https://ui-avatars.com/api/?' ){
+            $path = $user->profile_image;
+            dd($path);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Profile image fetched',
+                'data' => $path
+            ], 200);
+        }else{
+            $path = Storage::url('avatars/'.$user->profile_image);
+            dd($path);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Profile image fetched',
+                'data' => null
+            ], 200);
+        }
+        
+        
+        
+        
+
+        // $user = Auth::user();
+        
+        // $image = Storage::disk('avatars')->get($user->profile_image);
+        
+    }
+
+
+
     public function register(Request $request)
     {
 
