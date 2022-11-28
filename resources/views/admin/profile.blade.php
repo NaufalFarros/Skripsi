@@ -47,7 +47,13 @@
                         <div class="card-body box-profile">
                             <div class="text-center">
                                
-                                <img class="profile-user-img img-fluid img-circle" src="{{'/storage/avatars/'. Auth::user()->profile_image}}" alt="User profile picture">
+                                @if (Auth::user()->profile_image == 'https://ui-avatars.com/api/?'.Auth::user()->name)
+                <img class="profile-user-img img-fluid img-circle"
+                src="{{Auth::user()->profile_image}}" alt="">
+                @else
+                <img class="profile-user-img img-fluid img-circle"
+                src="{{ '/storage/avatars/'.Auth::user()->profile_image }}" alt="">
+                @endif
                                 
                                 <form action="{{route('profile.update-image', Auth::user()->id )}}" method="POST" enctype="multipart/form-data">
                                     @csrf

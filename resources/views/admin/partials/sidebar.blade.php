@@ -12,11 +12,13 @@
          <!-- Sidebar user (optional) -->
          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
              <div class="image">
-                
-               
+                @if (Auth::user()->profile_image == 'https://ui-avatars.com/api/?'.Auth::user()->name)
+                <img class="profile-user-img img-fluid img-circle"
+                src="{{Auth::user()->profile_image}}" alt="">
+                @else
                 <img class="profile-user-img img-fluid img-circle"
                 src="{{ '/storage/avatars/'.Auth::user()->profile_image }}" alt="">
-                
+                @endif
                  
                      
              </div>
