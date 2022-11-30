@@ -174,7 +174,7 @@ class UserController extends Controller
         }
         if($request->name != null){
             //validasi data
-            $this->validate($request->name, [
+            $this->validate($request, [
                 'name' => ['required', 'string', 'max:255'],
             ]
             );
@@ -186,7 +186,7 @@ class UserController extends Controller
 
         if($request->username != null){
             //validasi data
-            $this->validate($request->username, [
+            $this->validate($request, [
                 'username' => ['required', 'string', 'max:255', 'unique:users'],
             ],
                 [
