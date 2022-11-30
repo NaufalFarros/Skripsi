@@ -163,7 +163,8 @@ class UserController extends Controller
 
         // $data = $request->all();
         // dd($data);
-
+        $user = User::where('_id', Auth::user()->_id)->first();
+        
         if ($request->name != null) {
             //validasi data
             $this->validate(
@@ -197,7 +198,7 @@ class UserController extends Controller
 
         if ($request->hasFile('image')) {
             // dd($photoUser);
-            $user = User::where('_id', Auth::user()->_id)->first();
+            
             $photoUser = $user->profile_image;
 
             if ($photoUser != null) {
