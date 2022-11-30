@@ -172,19 +172,28 @@ class UserController extends Controller
                 File::delete($path);
             }
         }
-        if($request->name != null && $request->username != null){
+        if($request->name != null){
             //validasi data
-            $validator = Validator::make($request->all(), [
+            $this->validate($request->name, [
                 'name' => ['required', 'string', 'max:255'],
-                'username' => ['required', 'string', 'max:255', 'unique:users,username,' . $user->id],
+            ]
+            );
+
+            $user = User::where('_id', Auth::user()->_id)->first();
+            $user->name = $request->name;
+            $user->save();
+        }
+
+        if($request->username != null){
+            //validasi data
+            $this->validate($request->username, [
+                'username' => ['required', 'string', 'max:255', 'unique:users'],
             ],
                 [
                     'username.unique' => 'Username already exists',
                 ]
             );
-
             $user = User::where('_id', Auth::user()->_id)->first();
-            $user->name = $request->name;
             $user->username = $request->username;
             $user->save();
         }
