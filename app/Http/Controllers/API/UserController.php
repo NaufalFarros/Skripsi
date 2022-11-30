@@ -172,7 +172,7 @@ class UserController extends Controller
                 File::delete($path);
             }
         }
-        if($request->all()){
+        if($request->name && $request->username != null){
             //validasi data
             $validator = Validator::make($request->all(), [
                 'name' => ['required', 'string', 'max:255'],
