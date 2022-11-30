@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Validator;
 use Laravel\Sanctum\PersonalAccessToken;
 use MongoDB\Operation\Update;
 use PhpParser\Node\Stmt\Return_;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -159,21 +161,57 @@ class UserController extends Controller
 
     public  function updateProfile(Request $request){
 
-        $data = $request->all();
-
+        // $data = $request->all();
         // dd($data);
-        $user = Auth::user();
+        $user = User::where('_id', Auth::user()->_id)->first();
+        $photoUser = $user->profile_image;
 
-        $user->Update($data);
+        if($photoUser != null){
+            $path = public_path('storage/avatars/'.$photoUser);
+            if(File::exists($path)){
+                File::delete($path);
+            }
+        }
+        if($request->all()){
+            //validasi data
+            $validator = Validator::make($request->all(), [
+                'name' => ['required', 'string', 'max:255'],
+                'username' => ['required', 'string', 'max:255', 'unique:users,username,' . $user->id],
+            ],
+                [
+                    'username.unique' => 'Username already exists',
+                ]
+            );
 
+            $user = User::where('_id', Auth::user()->_id)->first();
+            $user->name = $request->name;
+            $user->username = $request->username;
+            $user->save();
+        }
+        
+
+        if($request->hasFile('image')){
+            // dd($photoUser);
+            $request->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+            
+            $strRandom = str::random(10);
+            $extension = $request->image->extension();
+
+            $filename = Auth::user()->name.'-'.$strRandom . '.' . $extension;
+            $request->image->storeAs('avatars',$filename,'public');
+            auth()->user()->update([
+                'profile_image' => $filename
+            ]);
+        }
         return response()->json([
             'status' => 'success',
             'message' => 'Profile Updated',
             'data' => $user
         ]);
-
-
-       
+        // $user = Auth::user();
+        // $user->Update($data);
     }
 
     public function updatePassword(Request $request){
