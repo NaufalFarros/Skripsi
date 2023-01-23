@@ -15,9 +15,7 @@ RUN apt-get update && apt-get install -y \
         libssl-dev \
         git \
     && pecl install mongodb \
-    && pecl install xdebug \
     && docker-php-ext-enable mongodb \
-    && docker-php-ext-enable xdebug \
     && docker-php-ext-configure gd \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install pdo_mysql \
