@@ -14,6 +14,8 @@
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item active">Data-ESP</li>
                 </ol>
+                
+                
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -24,6 +26,8 @@
 <!-- Main content -->
 <div class="content">
     <div class="container-fluid">
+        <a class="btn btn-success mb-2" href="{{ route('exportSensors') }}">Export Data Sensors</a>
+
         <div class="row">
             <div class="col-6-lg">
                 <canvas id="myChart" width="1000" height="400"></canvas>

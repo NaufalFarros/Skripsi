@@ -29,6 +29,8 @@
 
     <div class="content">
         <div class="container-fluid">
+        <a class="btn btn-success mb-2" href="{{ route('exportSensors') }}">Export Data Sensors</a>
+
             <div class="card">
                 <!-- /.card-header -->
                 <div class="card-body">

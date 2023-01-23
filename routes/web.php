@@ -32,8 +32,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','verified']], functio
     Route::get('/datasensor',[dataiotController::class,'index'])->name('datasensor.index');
     Route::get('/tabelsensor',[dataiotController::class,'datatable'])->name('tabelsensor.datatable');
 
+    Route::get('/export', [dataiotController::class, 'exportSensors'])->name('exportSensors');
+
     Route::post('profile/update-image', [ProfileController::class, 'uploadImage'])->name('profile.update-image');
     Route::post('profile/update', [ProfileController::class, 'UbahPassword'])->name('profile.update');
+
+
+    
+
+
     // Route::put('donasi/nonactive/{donasi}',[AprroveController::class,'nonactive'])->name('donasi.nonactive');
     // Route::put('donasi/active/{donasi}', [AprroveController::class,'active'])->name('donasi.active');
    
