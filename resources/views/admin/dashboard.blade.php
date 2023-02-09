@@ -10,10 +10,11 @@
                     <div class="small-box bg-info">
                         <div class="inner">
                           {{-- @foreach ($data as $d ) --}}
-                            
-                          <h3>{{$data->suhu}} 'C</h3>
+                          
+                          
+                          <h3>{{$data == null ? 0 : $data->suhu}} 'C</h3>
                           {{-- @endforeach --}}
-                          <p>{{$data->tanggal}}</p>
+                          <p> tanggal:  <br>{{$data == null ? '-' : $data->tanggal}}</p>
 
                             <p>Sensor Suhu</p>
                         </div>
@@ -29,8 +30,10 @@
                     <!-- small card -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>{{$data->ph}}</h3>
-                            <p>{{$data->tanggal}}</p>
+                          
+                          
+                            <h3>{{$data == null ? 0 : $data->ph}}</h3>
+                            <p> tanggal:  <br>{{$data == null ? '-' : $data->tanggal}}</p>
 
                             <p>Sensor pH</p>
                         </div>
@@ -46,9 +49,14 @@
                     <!-- small card -->
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3>{{$data->salinitas}} ppt </h3>
-                            <p>{{$data->tanggal}}</p>
+                         
+                         
+
+
+                            <h3>{{$data == null ? 0 : $data->salinitas }}  ppt </h3>
+                            <p> tanggal:  <br>{{$data == null ? '-' : $data->tanggal}}</p>
                             <p>Sensor Salinitas</p>
+                          
                         </div>
                         <div class="icon">
                           <i class="fas fa-water"></i>
