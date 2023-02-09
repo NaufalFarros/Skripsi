@@ -117,7 +117,7 @@ var updateChart = function () {
         method: "GET",
     
         success: function (data) {
-            console.log(data);
+            // console.log(data);
             chart.data.labels = [];
             chart.data.datasets[0].data = [];
             chart.data.datasets[1].data = [];

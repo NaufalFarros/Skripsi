@@ -41,8 +41,9 @@ class dataiotController extends Controller
         return view('admin.datasensor');
     }
 
-    public function ajax(){
-        $data = dataSensor::orderby('created_at','desc')->take(10)->get()->reverse()->values();     
+    public function ajax()
+    {
+        $data = dataSensor::orderby('created_at', 'desc')->take(10)->get()->reverse()->values();
         return response($data);
     }
 
@@ -83,20 +84,29 @@ class dataiotController extends Controller
         //     ]);
         //     return response()->json($data);
         // }
-            // dd($request); 
+        // dd($request); 
 
-        $animal= new dataSensor();
-        $animal->suhu = $request->get('suhu');
-        $animal->ph = $request->get('pH');
-        $animal->salinitas = $request->get('Garam');
-        $animal->kalmanSuhu = $request->get('kalmanSuhu');
-        $animal->kalmanPh = $request->get('kalmanPh');
-        $animal->kalmanSalinitas = $request->get('kalmanGaram');
-        $animal->tanggal = Carbon::now()->format('Y-m-d H:i:s');
-        $animal->save();
-        return response()->json($animal);
 
-      
+        //jika semua data request ada yang null maka tidak akan disimpan
+        if ($request->get('suhu') == null || $request->get('pH') == null || $request->get('Garam') == null || $request->get('kalmanSuhu') == null || $request->get('kalmanPh') == null || $request->get('kalmanGaram') == null) {
+            return response()->json(['message' => 'Data tidak lengkap'], 400);
+        }
+            $animal = new dataSensor();
+            $animal->suhu = $request->get('suhu');
+            $animal->ph = $request->get('pH');
+            $animal->salinitas = $request->get('Garam');
+            $animal->kalmanSuhu = $request->get('kalmanSuhu');
+            $animal->kalmanPh = $request->get('kalmanPh');
+            $animal->kalmanSalinitas = $request->get('kalmanGaram');
+            $animal->tanggal = Carbon::now()->format('Y-m-d H:i:s');
+            $animal->save();
+            return response()->json($animal);
+        
+
+
+
+
+
 
         //simpan data ke database
 

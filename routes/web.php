@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\dataiotController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -24,9 +25,7 @@ Route::get('/', function () {
 Route::get('/sensor',[dataiotController::class,'ajax']);
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','verified']], function () {
-    Route::get('/', function () {
-        return view('admin.dashboard');
-    })->name('admin');
+    Route::get('/', [DashboardController::class, 'index'])->name('admin');
     
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('/datasensor',[dataiotController::class,'index'])->name('datasensor.index');

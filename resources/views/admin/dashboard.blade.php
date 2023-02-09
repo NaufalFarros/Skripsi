@@ -1,27 +1,64 @@
 @extends('admin.index')
 
 @section('content')
+    <section class="content">
+        <div class="container-fluid">
+            {{-- <h5 class="mb-2 mt-4">Small Box</h5> --}}
+            <div class="row">
+                <div class="col-lg-3 col-6 mt-3">
+                    <!-- small card -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                          {{-- @foreach ($data as $d ) --}}
+                            
+                          <h3>{{$data->suhu}} 'C</h3>
+                          {{-- @endforeach --}}
 
-<div class="container-fluid">
-    <div class="info-box bg-info">
-        <span class="info-box-icon"><i class="far fa-bookmark"></i></span>
+                            <p>Sensor Suhu</p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-temperature-low"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">
+                            More info <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6 mt-3">
+                    <!-- small card -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>{{$data->ph}}</h3>
 
-        <div class="info-box-content">
-          <span class="info-box-text">Jumlah Data Sensor</span>
-          <span class="info-box-number"></span>
+                            <p>Sensor pH</p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-soap"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">
+                            More info <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6 mt-3">
+                    <!-- small card -->
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <h3>{{$data->salinitas}} ppt </h3>
 
-          <div class="progress">
-            <div class="progress-bar" style="width: 70%"></div>
-          </div>
-          <span class="progress-description">
-            70% Increase in 30 Days
-          </span>
-        </div>
-        <!-- /.info-box-content -->
-      </div>
-</div>
-
-
-
+                            <p>Sensor Salinitas</p>
+                        </div>
+                        <div class="icon">
+                          <i class="fas fa-water"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">
+                            More info <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </section>
+@section('script')
+@endsection
 
 @endsection
