@@ -13,6 +13,7 @@
                             
                           <h3>{{$data->suhu}} 'C</h3>
                           {{-- @endforeach --}}
+                          <p>{{$data->tanggal}}</p>
 
                             <p>Sensor Suhu</p>
                         </div>
@@ -29,6 +30,7 @@
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3>{{$data->ph}}</h3>
+                            <p>{{$data->tanggal}}</p>
 
                             <p>Sensor pH</p>
                         </div>
@@ -45,7 +47,7 @@
                     <div class="small-box bg-green">
                         <div class="inner">
                             <h3>{{$data->salinitas}} ppt </h3>
-
+                            <p>{{$data->tanggal}}</p>
                             <p>Sensor Salinitas</p>
                         </div>
                         <div class="icon">
