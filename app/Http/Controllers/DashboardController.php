@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $data = dataSensor::where('data_sensors')->orderBy('suhu', 'desc')->get()->reverse()->first();
+        $data = dataSensor::where('data_sensors')->orderBy('tanggal', 'asc')->get()->reverse()->first();
         // dd($data);
         return view('admin.dashboard', compact('data'));
     }
