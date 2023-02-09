@@ -84,7 +84,7 @@ class dataiotController extends Controller
         //     ]);
         //     return response()->json($data);
         // }
-        // dd($request); 
+        dd($request); 
 
 
         //jika semua data request ada yang null maka tidak akan disimpan
