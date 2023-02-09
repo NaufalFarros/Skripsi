@@ -88,9 +88,9 @@ class dataiotController extends Controller
 
             
         //jika semua data request ada yang null maka tidak akan disimpan
-        if ($request->get('suhu') == null || $request->get('pH') == null || $request->get('Garam') == null || $request->get('kalmanSuhu') == null || $request->get('kalmanPh') == null || $request->get('kalmanGaram') == null) {
-            return response()->json(['message' => 'Data tidak lengkap'], 400);
-        }
+        // if ($request->get('suhu') == null || $request->get('pH') == null || $request->get('Garam') == null || $request->get('kalmanSuhu') == null || $request->get('kalmanPh') == null || $request->get('kalmanGaram') == null) {
+        //     return response()->json(['message' => 'Data tidak lengkap'], 400);
+        // }
             $animal = new dataSensor();
             $animal->suhu = $request->get('suhu');
             $animal->ph = $request->get('pH');
