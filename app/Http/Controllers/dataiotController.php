@@ -35,7 +35,7 @@ class dataiotController extends Controller
 
         if ($request->ajax()) {
 
-            return $data = dataSensor::orderby('created_at', 'desc')->get()->reverse()->values();
+            return $data = dataSensor::orderby('created_at', 'desc')->take(50)->get()->reverse()->values();
         }
         // dd($data);
         return view('admin.datasensor');
