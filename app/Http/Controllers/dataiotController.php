@@ -85,7 +85,15 @@ class dataiotController extends Controller
         //     return response()->json($data);
         // }
         // dd($request->all()); 
+        
+        // validasi bearer token
+        if ($request->header('Authorization') != 'Bearer ' . env('API_TOKEN')) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+        
 
+
+    
             
         //jika semua data request ada yang null maka tidak akan disimpan
         if ($request->get('suhu') == null || $request->get('pH') == null || $request->get('Garam') == null || $request->get('kalmanSuhu') == null || $request->get('kalmanPh') == null || $request->get('kalmanGaram') == null) {
